@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .logo{
+            width: 800px;
+            height: 500px;
+            border: 1px solid;
+        }
+        .img{
+            width: 800px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bai so 1</h1>
+    <div class="logo" id="div1" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+    <img class="img"id='drag1' draggable="true" ondragstart="drag(event)" src="/kisspng-fpt-polytechnic-logo-image-symbol-portable-network-moestudio-co-appoly-1-5-apk-5bf8b37ac4acd3.4774650115430255308056(1).jpg" alt="">
+    <script>
+        // B1: Set thuôc tính drag cho đối tượng keo đi 
+        // B2: Xác định giá trị drag bằng cách gọi sự kiện ondragstart
+        function drag(ev){
+            ev.dataTransfer.setData('text',ev.target.id);
+        }
+        //Thiết lập dữ liệu được kéo dài đi thông qua id là drag
+        //buoc 3: Thiết lập giá trị có thê  drop khi có sự kiện 1 đối tượng đang được drag lên trên 
+        function allowDrop(ev){
+            ev.preventDefault();
+        }
+        //b4: Xac dinh du lieu drop xuong
+        function drop(ev){
+            ev.preventDefault();
+            var data= ev.dataTransfer.getData('text');
+            ev.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</body>
+</html>
